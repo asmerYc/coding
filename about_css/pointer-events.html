@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .grand_box {
+            margin: 100px auto;
+            width: 300px;
+            height: 300px;
+            background-color: red;
+            border: 1px solid black;
+
+        }
+        .parent_box {
+            height: 70%;
+            margin: 30px;
+            background-color: yellow;
+            border: inherit;
+                       pointer-events: none;
+        }
+
+        .child_box {
+            height:70%;
+            margin: 30px;
+            background-color: deepskyblue;
+            border: inherit;
+            /* pointer-events: none; */
+        }
+    </style>
+</head>
+<script>
+    // 一：pointer-events
+    // pointer-events属性是一个指针属性，是用于控制在什么条件下特定的图形元素可以成为指针时间的目标，pointer-events属性很多，但是对于
+    // 浏览器来说，适用于HTML元素的只有三个值，其他的几个值都是针对SVG元素的.
+
+    // 二：属性值介绍
+    // pointer-events属性值
+    // auto | noe | inherit ==> HTML
+    // visiblePainted | visibleFill | visibleStroke | visible | painted |fill | stroke | all ==> SVG
+
+
+    // 针对HTML元素
+    // none:该元素永远不会成为鼠标事件的target,但是，当其后代元素的pointer-events属性指定其他值时，鼠标事件可以指向后代元素，在这种情况下
+    // 鼠标事件将在捕获或冒泡阶段触发父元素的事件侦听器（鼠标的动作将不能被该元素及其子元素捕获，但是能够被其父元素捕获）
+
+    // auto：默认值，表示指针内容已启用，此时元素会响应指针事件，阻止这些事件在其下边的元素上触发，对于svg内容，该值与visiblePatinted效果相同
+
+    // inherit：将使用pointer-events元素的父级的值
+
+    // 注意：使用pointer-events来阻止元素成为鼠标事件目标不一定意味着元素上的事件侦听器永远不会触发。如果元素后代明确指定了pointer-events属性并允许其成为鼠标事件的目标。
+</script>
+<body>
+    <div class="grand_box" onclick="alert('grand_box')">
+        <div class="parent_box" onclick="alert('parent_box')">
+            <!-- <div class="child_box" onclick="alert('child_box')"></div> -->
+        </div>
+    </div>
+</body>
+</html>
